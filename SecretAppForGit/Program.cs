@@ -7,29 +7,31 @@
 
         static void Main(string[] args)
         {
-            int count = 0;
-            while (count < userNames.Length)
-            {
-                Console.WriteLine("Hell World!");
-                count++;
-            }
+            AddUser();
+            ShowUsers();
         }
 
         static void AddUser()
         {
-            Console.WriteLine("Hello, from AddUser");
+            Console.WriteLine("Hello from AddUser");
         }
         static void ChangePassword()
         {
-            Console.WriteLine("Hello, from ChangePassword");
+            Console.WriteLine("Hello from ChangePassword");
         }
         static void ShowUsers()
         {
-            Console.WriteLine("Hello, from ShowUsers");
+            int i = 0;
+            while (i < userNames.Length)
+            {
+                
+                Console.WriteLine("Hello " + userNames[i].ToLower());
+                i++;
+            }
         }
         static void EndApplication()
         {
-            Console.WriteLine("Hello, from EndApplication");
+            Console.WriteLine("Hello from EndApplication");
         }
     }
 }
