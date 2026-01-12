@@ -14,5 +14,22 @@
                 count++;
             }
         }
+
+        static void AddUser()
+        {
+            Console.WriteLine("Hello, from AddUser");
+        }
+        static void ChangePassword()
+        {
+            Console.WriteLine("Hello, from ChangePassword");
+        }
+        static void ShowUsers()
+        {
+            Console.WriteLine("Hello, from ShowUsers");
+        }
+        static void EndApplication()
+        {
+            Console.WriteLine("Hello, from EndApplication");
+        }
     }
 }
