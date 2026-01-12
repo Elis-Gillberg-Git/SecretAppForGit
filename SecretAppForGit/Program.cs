@@ -7,8 +7,25 @@
 
         static void Main(string[] args)
         {
-            AddUser();
-            ShowUsers();
+            bool run = true;
+            while (run)
+            {
+                Console.WriteLine("tryck 0 för att sluta");
+                if (int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    Console.WriteLine("riktig sifra");
+                    if(choice == 0)
+                    {
+                        run = false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("välj från menyn");
+                }
+            }
+            Console.WriteLine("hej då");
+            Thread.Sleep(3000);
         }
 
         static void AddUser()
