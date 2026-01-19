@@ -10,14 +10,31 @@
             bool run = true;
             while (run)
             {
-                Console.WriteLine("tryck 0 för att sluta");
+                Console.WriteLine("1. Logga in\r\n2. Lägg till användare\r\n3. Ändra lösenord\r\n4. vissa använadrlista \r\n0. Avsluta\r\n");
+
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
                     Console.WriteLine("riktig sifra");
-                    if(choice == 0)
+                    if (choice == 0)
                     {
                         run = false;
                     }
+                }
+                else if (choice == 1)
+                {
+                    Login();
+                }
+                else if (choice == 2)
+                {
+                    AddUser();
+                }
+                else if (choice == 3) 
+                {
+                    ChangePassword();
+                }
+                else if(choice == 4)
+                {
+                    ShowUsers();
                 }
                 else
                 {
@@ -25,9 +42,12 @@
                 }
             }
             Console.WriteLine("hej då");
-            Thread.Sleep(3000);
-        }
 
+        }
+        static void Login()
+        {
+            Console.WriteLine("hello from Login");
+        }
         static void AddUser()
         {
             Console.WriteLine("Hello from AddUser");
