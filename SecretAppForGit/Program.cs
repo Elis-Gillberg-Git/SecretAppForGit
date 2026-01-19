@@ -19,27 +19,28 @@
                     {
                         run = false;
                     }
+                    else if (choice == 1)
+                    {
+                        Login();
+                    }
+                    else if (choice == 2)
+                    {
+                        AddUser();
+                    }
+                    else if (choice == 3)
+                    {
+                        ChangePassword();
+                    }
+                    else if (choice == 4)
+                    {
+                        ShowUsers();
+                    }
+                    else
+                    {
+                        Console.WriteLine("välj från menyn");
+                    }
                 }
-                else if (choice == 1)
-                {
-                    Login();
-                }
-                else if (choice == 2)
-                {
-                    AddUser();
-                }
-                else if (choice == 3) 
-                {
-                    ChangePassword();
-                }
-                else if(choice == 4)
-                {
-                    ShowUsers();
-                }
-                else
-                {
-                    Console.WriteLine("välj från menyn");
-                }
+                
             }
             Console.WriteLine("hej då");
 
