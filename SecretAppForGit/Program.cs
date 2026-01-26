@@ -91,11 +91,12 @@ namespace SecretAppForGit
             }
             Menu();
         }
-
+        //TODO addUser inte klar
         static void AddUser()
         {
             Console.WriteLine("Hello from AddUser");
         }
+        //TODO ChangePassword inte klar
         static void ChangePassword()
         {
             Console.WriteLine("Hello from ChangePassword");
