@@ -94,7 +94,15 @@ namespace SecretAppForGit
         //TODO addUser inte klar
         static void AddUser()
         {
-            Console.WriteLine("Hello from AddUser");
+            Console.WriteLine("Här kan du lägga till en användare");
+            Console.WriteLine("Skriv användarens namn");
+            string name = Console.ReadLine();
+            Console.WriteLine($"skriv lösenordert för {name}");
+            string password = Console.ReadLine();
+
+            string[] tempNames = new string [userNames.Length];
+            string[] tempPassword = new string[userPasswords.Length];
+
         }
         //TODO ChangePassword inte klar
         static void ChangePassword()
