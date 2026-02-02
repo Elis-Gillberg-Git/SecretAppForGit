@@ -10,6 +10,7 @@ namespace SecretAppForGit
         
         static void Main(string[] args)
         {
+        
             Menu();
 
             bool run = true;
@@ -30,17 +31,22 @@ namespace SecretAppForGit
                     else if (choice == 2)
                     {
                         AddUser();
-                        Menu();
                     }
                     else if (choice == 3)
                     {
                         ChangePassword();
-                        Menu();
                     }
                     else if (choice == 4)
                     {
                         ShowUsers();
-                        Menu();
+                    }
+                    else if (choice == 5)
+                    {
+                        DeletUser();
+                    }
+                    else if (choice == 6)
+                    {
+                        MethodWithDictionary();
                     }
                     else if (choice == 9)
                     {
@@ -91,7 +97,6 @@ namespace SecretAppForGit
             }
             Menu();
         }
-        //TODO addUser inte klar
         static void AddUser()
         {
             Console.WriteLine("Här kan du lägga till en användare");
@@ -100,14 +105,86 @@ namespace SecretAppForGit
             Console.WriteLine($"skriv lösenordert för {name}");
             string password = Console.ReadLine();
 
-            string[] tempNames = new string [userNames.Length];
-            string[] tempPassword = new string[userPasswords.Length];
+            string[] tempNames = new string [userNames.Length + 1];
+            string[] tempPassword = new string[userPasswords.Length + 1];
+
+            int i = 0;
+            while (i < userNames.Length) 
+            {
+                tempNames[i] = userNames[i];
+                i++;
+            }
+
+            tempNames[tempNames.Length - 1] = name;
+
+            userNames = tempNames;
+
+            int j = 0;
+            while (j < userNames.Length)
+            {
+                tempPassword[j] = userNames[j];
+                j++;
+            }
+
+
+            tempPassword[tempPassword.Length - 1] = password;
+
+            userPasswords = tempPassword;
+
+            foreach(var post in userNames)
+            {
+                Console.WriteLine(post);
+            }
+
+            foreach(var post in userPasswords)
+            {
+                Console.WriteLine(post);
+            }
 
         }
         //TODO ChangePassword inte klar
         static void ChangePassword()
         {
-            Console.WriteLine("Hello from ChangePassword");
+            string[] tempNames = new string[userNames.Length - 1];
+            string[] tempPassword = new string[userPasswords.Length - 1];
+            Console.WriteLine("Skriv lösenordet du vill ändra: ");
+            string name = Console.ReadLine();
+
+            int hit = Array.IndexOf(userPasswords, name);
+
+            if (hit == -1)
+            {
+                Console.WriteLine("lösenordet finns inte i listan");
+                return;
+            }
+
+            int i = 0;
+            int j = 0;
+
+            while (i < userPasswords.Length)
+            {
+                if (hit == i)
+                {
+                    i++;
+                    Console.WriteLine("Skriv det nya lösenordet namn");
+                    string password = Console.ReadLine();
+
+                    tempPassword[tempPassword.Length - 1] = password;
+
+                    continue;
+                }
+                tempPassword[j] = userPasswords[i];
+                i++;
+                j++;
+            }
+
+
+
+
+
+            userPasswords = tempPassword;
+        
+
         }
         static void ShowUsers()
         {
@@ -119,6 +196,56 @@ namespace SecretAppForGit
                 i++;
             }
         }
+        static void DeletUser()
+        {
+            string[] tempNames = new string[userNames.Length - 1];
+            string[] tempPassword = new string[userPasswords.Length - 1];
+            Console.WriteLine("Skriv namnet på den du vill ta bort: ");
+            string name = Console.ReadLine();
+
+            int hit = Array.IndexOf(userNames, name);
+
+            if (hit == -1)
+            {
+                Console.WriteLine("Namnet finns inte i listan");
+                return;
+            }
+
+            int i = 0;
+            int j = 0;
+
+            while (i < userNames.Length)
+            {
+                if (hit == i)
+                {
+                    i++;
+                    continue;
+                }
+                tempNames[j] = userNames[i];
+                i++;
+                j++;
+            }
+
+            userNames = tempNames;
+
+            i = 0;
+            j = 0;
+
+            while (i < userNames.Length)
+            {
+                if (hit == i)
+                {
+                    i++;
+                    continue;
+                }
+                tempNames[j] = userNames[i];
+                i++;
+                j++;
+            }
+
+            userNames = tempNames;
+        }
+
         static void Menu()
         {
             Console.WriteLine(
@@ -127,8 +254,30 @@ namespace SecretAppForGit
                 "\r\n2. Lägg till användare" +
                 "\r\n3. Ändra lösenord" +
                 "\r\n4. vissa använadrlista " +
+                "\r\n5. Ta bort ett namn ur listan" +
+                "\r\n6. visa MethodWithDictionary()" +
                 "\r\n9. visa menyn" +
                 "\r\n0. Avsluta\r\n");
+        }
+
+        private static void MethodWithDictionary()
+        {
+            Dictionary<string, string> userList = new Dictionary<string, string>();
+
+            userList.Add("Pelle", "1234");
+            userList.Add("Stina", "abcd");
+            userList.Add("Ali", "qwery");
+            userList.Add("Bob", "12345");
+            userList.Add("Melissa", "123456");
+
+            userList.Remove("Bob");
+
+            int i = 0;
+
+            foreach (var rad in userList)
+            {
+                Console.WriteLine(rad.Key);
+            }
         }
     }
 }
