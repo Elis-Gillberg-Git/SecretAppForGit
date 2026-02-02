@@ -148,51 +148,28 @@ namespace SecretAppForGit
             string[] tempNames = new string[userNames.Length - 1];
             string[] tempPassword = new string[userPasswords.Length - 1];
             Console.WriteLine("Skriv lösenordet du vill ändra: ");
-            string name = Console.ReadLine();
+            string password = Console.ReadLine();
 
-            int hit = Array.IndexOf(userPasswords, name);
 
-            if (hit == -1)
+            int hit = Array.IndexOf(userPasswords, password);
+
+            if(hit == -1)
             {
-                Console.WriteLine("lösenordet finns inte i listan");
+                Console.WriteLine("lösenordet finns inte.");
                 return;
             }
 
-            int i = 0;
-            int j = 0;
+            Console.WriteLine("skriv det nya lösenordet");
+            string newPassword = Console.ReadLine();
 
-            while (i < userPasswords.Length)
-            {
-                if (hit == i)
-                {
-                    i++;
-                    Console.WriteLine("Skriv det nya lösenordet namn");
-                    string password = Console.ReadLine();
-
-                    tempPassword[tempPassword.Length - 1] = password;
-
-                    continue;
-                }
-                tempPassword[j] = userPasswords[i];
-                i++;
-                j++;
-            }
-
-
-
-
-
-            userPasswords = tempPassword;
-        
-
+            userPasswords[hit] = newPassword;
         }
         static void ShowUsers()
         {
             int i = 0;
             while (i < userNames.Length)
             {
-                
-                Console.WriteLine("Hello " + userNames[i].ToLower());
+                Console.WriteLine("Hello " + userNames[i].ToLower() + " " + userPasswords[i]);
                 i++;
             }
         }
@@ -202,6 +179,7 @@ namespace SecretAppForGit
             string[] tempPassword = new string[userPasswords.Length - 1];
             Console.WriteLine("Skriv namnet på den du vill ta bort: ");
             string name = Console.ReadLine();
+
 
             int hit = Array.IndexOf(userNames, name);
 
