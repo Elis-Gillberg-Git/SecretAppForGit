@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace SecretAppForGit
 {
@@ -7,7 +8,9 @@ namespace SecretAppForGit
     {
         static string[] userNames = { "Pelle", "Stina", "Ali" };
         static string[] userPasswords = { "1234", "abcd", "qwerty" };
+        static string adminPassword = "wasd";
         static bool userLoggin = false;
+        static string currentUser;
         static void Main(string[] args)
         {
         
@@ -79,6 +82,7 @@ namespace SecretAppForGit
                     {
                         Console.WriteLine("välkommen " + name);
                         userLoggin = true;
+                        currentUser = name;
                         return;
                     }
                     else
@@ -101,6 +105,11 @@ namespace SecretAppForGit
         static void AddUser()
         {
             Console.WriteLine("Här kan du lägga till en användare");
+            if (userLoggin == false)
+            {
+                Console.WriteLine("Logga in först innan du lägger till en användare");
+                return;
+            }
             Console.WriteLine("Skriv användarens namn");
             string name = Console.ReadLine();
             Console.WriteLine($"skriv lösenordert för {name}");
@@ -195,51 +204,77 @@ namespace SecretAppForGit
         {
             string[] tempNames = new string[userNames.Length - 1];
             string[] tempPassword = new string[userPasswords.Length - 1];
-            Console.WriteLine("Skriv namnet på den du vill ta bort: ");
-            string name = Console.ReadLine();
+            bool userTheSame = false;
 
-
-            int hit = Array.IndexOf(userNames, name);
-
-            if (hit == -1)
+            if (userLoggin == false)
             {
-                Console.WriteLine("Namnet finns inte i listan");
+                Console.WriteLine("Du måste logga in för att ta bort en användare");
                 return;
             }
-
-            int i = 0;
-            int j = 0;
-
-            while (i < userNames.Length)
+            else 
             {
-                if (hit == i)
+                Console.WriteLine("Skriv namnet på den du vill ta bort: ");
+                string nameDelet = Console.ReadLine();
+                if (currentUser == nameDelet)
                 {
-                    i++;
-                    continue;
+                    userTheSame = true;
                 }
-                tempNames[j] = userNames[i];
-                i++;
-                j++;
-            }
-
-            userNames = tempNames;
-
-            i = 0;
-            j = 0;
-
-            while (i < userNames.Length)
-            {
-                if (hit == i)
+                else if (currentUser != nameDelet)
                 {
-                    i++;
-                    continue;
-                }
-                tempNames[j] = userNames[i];
-                i++;
-                j++;
-            }
 
-            userNames = tempNames;
+                    Console.WriteLine("skriv Admin lösenordet för att ta bort en användare");
+                    string userAdminPassword = Console.ReadLine();
+
+
+                    if (userAdminPassword != adminPassword)
+                    {
+                        Console.WriteLine("du är inte Admin, sluta försöka ta bort folk");
+                        return;
+                    }
+                }
+
+                int hit = Array.IndexOf(userNames, nameDelet);
+
+                if (hit == -1)
+                {
+                    Console.WriteLine("Namnet finns inte i listan");
+                    return;
+                }
+
+                int i = 0;
+                int j = 0;
+
+                while (i < userNames.Length)
+                {
+                    if (hit == i)
+                    {
+                        i++;
+                        continue;
+                    }
+                    tempNames[j] = userNames[i];
+                    i++;
+                    j++;
+                }
+
+                userNames = tempNames;
+
+                i = 0;
+                j = 0;
+
+                while (i < userNames.Length)
+                {
+                    if (hit == i)
+                    {
+                        i++;
+                        continue;
+                    }
+                    tempNames[j] = userNames[i];
+                    i++;
+                    j++;
+                }
+
+                userNames = tempNames;
+            }
         }
 
         static void Menu()
