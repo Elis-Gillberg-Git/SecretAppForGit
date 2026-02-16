@@ -7,7 +7,7 @@ namespace SecretAppForGit
     {
         static string[] userNames = { "Pelle", "Stina", "Ali" };
         static string[] userPasswords = { "1234", "abcd", "qwerty" };
-        
+        static bool userLoggin = false;
         static void Main(string[] args)
         {
         
@@ -78,6 +78,7 @@ namespace SecretAppForGit
                     if (userPasswords[i] == password)
                     {
                         Console.WriteLine("välkommen " + name);
+                        userLoggin = true;
                         return;
                     }
                     else
