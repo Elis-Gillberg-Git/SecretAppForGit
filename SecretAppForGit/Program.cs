@@ -154,16 +154,33 @@ namespace SecretAppForGit
 
             int changePassword = Array.IndexOf(userNames, password);
 
-            if(changePassword == -1)
+            Console.WriteLine("Skriv det nuvarande lösenordet");
+            string oldPassword = Console.ReadLine();
+
+            int oldPasswordIndex = Array.IndexOf(userPasswords, oldPassword);
+
+            if(userLoggin == false)
+            {
+                Console.WriteLine("Du måste logga in för att ändra lösenordet");
+                return;
+            }
+            else if (changePassword == -1)
+            {
+                Console.WriteLine("lösenordet finns inte.");
+                return;
+            }
+            else if (oldPasswordIndex == -1)
             {
                 Console.WriteLine("lösenordet finns inte.");
                 return;
             }
 
-            Console.WriteLine("skriv det nya lösenordet");
-            string newPassword = Console.ReadLine();
-
-            userPasswords[changePassword] = newPassword;
+            if(oldPasswordIndex == changePassword)
+            {
+                Console.WriteLine("skriv det nya lösenordet");
+                string newPassword = Console.ReadLine();
+                userPasswords[changePassword] = newPassword;
+            }
         }
         static void ShowUsers()
         {
