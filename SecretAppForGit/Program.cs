@@ -148,13 +148,13 @@ namespace SecretAppForGit
         {
             string[] tempNames = new string[userNames.Length - 1];
             string[] tempPassword = new string[userPasswords.Length - 1];
-            Console.WriteLine("Skriv lösenordet du vill ändra: ");
+            Console.WriteLine("Skriv namnet vars lösenord du vill ändra: ");
             string password = Console.ReadLine();
 
 
-            int hit = Array.IndexOf(userPasswords, password);
+            int changePassword = Array.IndexOf(userNames, password);
 
-            if(hit == -1)
+            if(changePassword == -1)
             {
                 Console.WriteLine("lösenordet finns inte.");
                 return;
@@ -163,7 +163,7 @@ namespace SecretAppForGit
             Console.WriteLine("skriv det nya lösenordet");
             string newPassword = Console.ReadLine();
 
-            userPasswords[hit] = newPassword;
+            userPasswords[changePassword] = newPassword;
         }
         static void ShowUsers()
         {
