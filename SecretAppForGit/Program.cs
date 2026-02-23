@@ -21,7 +21,7 @@ namespace SecretAppForGit
             while (run)
             {
 
-                if (int.TryParse(Console.ReadLine(), out int choice))
+                if (int.TryParse(Console.ReadLine(), out int choice)) // TODO man kan skriva vad som helst i menyn. Ändra så att man endast kan välja numrena i menyn
                 {
                     Console.WriteLine("riktig sifra");
                     if (choice == 0)
@@ -94,7 +94,7 @@ namespace SecretAppForGit
             string password = Console.ReadLine();
 
             int i = 0;
-            while (i < userNames.Length) //todo Visar inte felmedelande om man har både fel namn och lösenord
+            while (i < userNames.Length) 
             {
                 if (userNames[i] == name) 
                 {
@@ -107,7 +107,7 @@ namespace SecretAppForGit
                     }
                     else
                     {
-                        Console.WriteLine("fel lösenord");
+                        
                     }
                 }
                 else
@@ -120,6 +120,7 @@ namespace SecretAppForGit
             {
                 Console.WriteLine("fel namn eller lösenord");
             }
+            Console.WriteLine("fel namn eller lösenord");
         }
         static void AddUser()
         {
@@ -171,7 +172,6 @@ namespace SecretAppForGit
             }
 
         }
-        //TODO ChangePassword inte klar
         static void ChangePassword()
         {
             string[] tempNames = new string[userNames.Length - 1];
