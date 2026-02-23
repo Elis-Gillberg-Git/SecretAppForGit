@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Metrics;
+﻿using System.Data;
+using System.Diagnostics.Metrics;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 
@@ -29,30 +30,45 @@ namespace SecretAppForGit
                     }
                     else if (choice == 1)
                     {
+                        Console.Clear();
+                        Menu();
                         Login();
                     }
                     else if (choice == 2)
                     {
+                        Console.Clear();
+                        Menu();
                         AddUser();
                     }
                     else if (choice == 3)
                     {
+                        Console.Clear();
+                        Menu();
                         ChangePassword();
+
                     }
                     else if (choice == 4)
                     {
+                        Console.Clear();
+                        Menu();
                         ShowUsers();
                     }
                     else if (choice == 5)
                     {
+                        Console.Clear();
+                        Menu();
                         DeletUser();
                     }
                     else if (choice == 6)
                     {
+                        Console.Clear();
+                        Menu();
                         MethodWithDictionary();
                     }
                     else if (choice == 7)
                     {
+                        Console.Clear();
+                        Menu();
                         LogOut();
                     }
                     else if (choice == 9)
@@ -78,9 +94,9 @@ namespace SecretAppForGit
             string password = Console.ReadLine();
 
             int i = 0;
-            while (i < userNames.Length)
+            while (i < userNames.Length) //todo Visar inte felmedelande om man har både fel namn och lösenord
             {
-                if (userNames[i] == name)
+                if (userNames[i] == name) 
                 {
                     if (userPasswords[i] == password)
                     {
@@ -91,10 +107,10 @@ namespace SecretAppForGit
                     }
                     else
                     {
-                        Console.WriteLine("fel namn");
+                        Console.WriteLine("fel lösenord");
                     }
                 }
-                else 
+                else
                 {
 
                 }
@@ -104,7 +120,6 @@ namespace SecretAppForGit
             {
                 Console.WriteLine("fel namn eller lösenord");
             }
-            Menu();
         }
         static void AddUser()
         {
@@ -206,10 +221,10 @@ namespace SecretAppForGit
         }
         static void DeletUser()
         {
-            string[] tempNames = new string[userNames.Length - 1];
+            string[] tempNames = new string[userNames.Length - 1]; 
             string[] tempPassword = new string[userPasswords.Length - 1];
-            bool userTheSame = false;
-
+            bool userTheSame = false; //gör inget
+            //TODO Man behöver inte skriva in användarens lösenord för att ta bort en användare.
             if (userLoggin == false)
             {
                 Console.WriteLine("Du måste logga in för att ta bort en användare");
@@ -221,8 +236,9 @@ namespace SecretAppForGit
                 string nameDelet = Console.ReadLine();
                 if (currentUser == nameDelet)
                 {
-                    userTheSame = true;
+                    userTheSame = true; //gör inget
                     LogOut();
+                    Console.WriteLine("Du har tagit bort dig själv från listan, du är nu utloggad");
                 }
                 else if (currentUser != nameDelet)
                 {
@@ -319,8 +335,6 @@ namespace SecretAppForGit
             userList.Add("Melissa", "123456");
 
             userList.Remove("Bob");
-
-            int i = 0;
 
             foreach (var rad in userList)
             {
