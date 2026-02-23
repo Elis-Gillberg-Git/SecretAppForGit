@@ -51,6 +51,10 @@ namespace SecretAppForGit
                     {
                         MethodWithDictionary();
                     }
+                    else if (choice == 7)
+                    {
+                        LogOut();
+                    }
                     else if (choice == 9)
                     {
                         Menu();
@@ -277,6 +281,10 @@ namespace SecretAppForGit
             }
         }
 
+        static void LogOut()
+        {
+             
+        }
         static void Menu()
         {
             Console.WriteLine(
@@ -288,6 +296,7 @@ namespace SecretAppForGit
                 "\r\n5. Ta bort ett namn ur listan" +
                 "\r\n6. visa MethodWithDictionary()" +
                 "\r\n9. visa menyn" +
+                "\r\n7. Logga ut" +
                 "\r\n0. Avsluta\r\n");
         }
 
