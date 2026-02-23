@@ -283,7 +283,14 @@ namespace SecretAppForGit
 
         static void LogOut()
         {
-             
+             if (userLoggin == true)
+            {
+                userLoggin = false;
+            }
+            else
+            {
+                Console.WriteLine("Du är inte inloggad");
+            }
         }
         static void Menu()
         {
