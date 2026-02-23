@@ -222,6 +222,7 @@ namespace SecretAppForGit
                 if (currentUser == nameDelet)
                 {
                     userTheSame = true;
+                    LogOut();
                 }
                 else if (currentUser != nameDelet)
                 {
